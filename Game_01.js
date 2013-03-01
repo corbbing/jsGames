@@ -29,6 +29,13 @@ function player(){
   this.inventory = [];
 }
 
+function getArmor(player){
+  player.armor = 0;
+  for (var i = 0; i < player.armorSlots.length; ++i){
+    player.armor += player.armorSlots[i].armor;
+  }
+}
+
 player.prototype.addEffect=function(effect){
   this.fx.push(effect);
 }
@@ -46,7 +53,9 @@ player.prototype.draw = function(ctx){
     if (this.fx[i].id == 1){
       this.stamina = this.maxStamina * this.fx.value;
       this.fx[i].duration += 1;
-      if (this.fx[i].duration = )
+      if (this.fx[i].duration = 0){
+        delete this.fx[i];
+      }
     }
   }
   ctx.save();
