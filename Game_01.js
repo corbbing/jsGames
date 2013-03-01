@@ -47,7 +47,7 @@ function hurt(player,dmg){
 player.prototype.draw = function(ctx){
   for (var i = 0; i < this.fx.length; ++i){
     if (this.fx[i].id == 0){
-      this.health -= this.fx.value;
+      this.health -= this.fx[i].value;
       this.fx[i].duration += 1;
     }
     if (this.fx[i].id == 1){
