@@ -13,14 +13,53 @@ window.onload = function(){
 }
 
 function player(){
+  this.health = 100;
+  this.maxHealth = 100;
+  this.stamina = 0;
+  this.maxStamina = 100;
   this.pos = pt(0,0);
   this.vc = vec(0,0);
   this.size = {w: 0, h: 0};
+  this.rot = 0;
+  this.speed = 1;
+  this.maxSpeed = 1;
+  this.affectors = [];
+}
+
+function hurt(player,dmg){
+  return player.health - (dmg * ())
 }
 
 player.prototype.draw = function(ctx){
+  for (var i = 0; i < affectors.length; ++i){
+    if (this.affectors[i].id == 0){
+      this.health -= this.affectors.value;
+      this.affectors.duration += 1;
+    }
+    if (this.affectors[i].id == 1){
+      this.stamina = this.maxStamina * this.affectors.value;
+      this.affectors.duration += 1;
+    }
+  }
+  ctx.save();
   ctx.fillRect(this.pos.x, this.pos.y, this.size.w, this.size.h);
+  this.vc.vx = Math.cos(this.rot * Math.PI * 2) * this.speed;
+  this.vc.vy = Math.sin(this.rot * Math.PI * 2) * this.speed;
   this.pos = addVec(this.pos, this.vc);
+  ctx.restore();
+}
+
+function affector(){
+  this.id=0;
+  this.value = 0;
+  this.duration = 0;
+  this.maxDuration = 100;
+  this.name = "";
+}
+
+function armor(){
+  this.armor = 0;
+  this.specials = [];
 }
 
 function addVec(pt,vec){
@@ -36,3 +75,7 @@ function vec(x,y){
 function pt(x,y){
   return {x: x, y:y};
 }
+
+
+
+
