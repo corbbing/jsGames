@@ -14,6 +14,7 @@ window.onload = function(){
 
 function player(){
   this.health = 100;
+  this.armor= 0;
   this.maxHealth = 100;
   this.stamina = 0;
   this.maxStamina = 100;
@@ -24,6 +25,8 @@ function player(){
   this.speed = 1;
   this.maxSpeed = 1;
   this.fx = [];
+  this.armorSlots = [];
+  this.inventory = [];
 }
 
 player.prototype.addEffect=function(effect){
@@ -31,7 +34,7 @@ player.prototype.addEffect=function(effect){
 }
 
 function hurt(player,dmg){
-  return player.health - (dmg * ())
+  return player.health - (dmg - (dmg * (1/this.armor)));
 }
 
 player.prototype.draw = function(ctx){
