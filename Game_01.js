@@ -23,7 +23,11 @@ function player(){
   this.rot = 0;
   this.speed = 1;
   this.maxSpeed = 1;
-  this.affectors = [];
+  this.fx = [];
+}
+
+player.prototype.addEffect=function(effect){
+  this.fx.push(effect);
 }
 
 function hurt(player,dmg){
@@ -31,25 +35,29 @@ function hurt(player,dmg){
 }
 
 player.prototype.draw = function(ctx){
-  for (var i = 0; i < affectors.length; ++i){
-    if (this.affectors[i].id == 0){
-      this.health -= this.affectors.value;
-      this.affectors.duration += 1;
+  for (var i = 0; i < fx.length; ++i){
+    if (this.fx[i].id == 0){
+      this.health -= this.fx.value;
+      this.fx[i].duration += 1;
     }
-    if (this.affectors[i].id == 1){
-      this.stamina = this.maxStamina * this.affectors.value;
-      this.affectors.duration += 1;
+    if (this.fx[i].id == 1){
+      this.stamina = this.maxStamina * this.fx.value;
+      this.fx[i].duration += 1;
+      if (this.fx[i].duration = )
     }
   }
   ctx.save();
+  ctx.fillStyle="050";
   ctx.fillRect(this.pos.x, this.pos.y, this.size.w, this.size.h);
+  ctx.fillStyle="#0f0";
+  ctx.fillRect(this.pos.x, this.pos.y, this.size.w * this.health/this.maxHealth, this.size.h);
   this.vc.vx = Math.cos(this.rot * Math.PI * 2) * this.speed;
   this.vc.vy = Math.sin(this.rot * Math.PI * 2) * this.speed;
   this.pos = addVec(this.pos, this.vc);
   ctx.restore();
 }
 
-function affector(){
+function effect(){
   this.id=0;
   this.value = 0;
   this.duration = 0;
