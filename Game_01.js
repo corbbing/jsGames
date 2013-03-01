@@ -29,6 +29,16 @@ function player(){
   this.inventory = [];
 }
 
+player.prototype.getStamina = function(){
+  this.stamina = 0;
+  for (var i = 0; i < this.fx.length; ++i){
+    if (this.fx[i]id = 0){
+      this.stamina += this.fx[i].value;
+    }
+    
+  }
+}
+
 function getArmor(player){
   player.armor = 0;
   for (var i = 0; i < player.armorSlots.length; ++i){
@@ -82,6 +92,13 @@ function armor(){
   this.specials = [];
 }
 
+function weapon(){
+  this.power = 0;
+  this.id = 0;
+  this.name = "";
+  this.age = 0; //age effects the strength, and will need to be reset at a station
+}
+
 function addVec(pt,vec){
   var x = vec.vx + pt.x;
   var y = vec.vy + pt.y;
@@ -96,6 +113,16 @@ function pt(x,y){
   return {x: x, y:y};
 }
 
-
+/*
+effect IDs:
+0: health
+1: stamina
+2: armor
+3: agility
+4: strength
+5: haste
+6: speed
+7: luck
+*/
 
 
