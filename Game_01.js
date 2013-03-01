@@ -20,7 +20,7 @@ function player(){
 
 player.prototype.draw = function(ctx){
   ctx.fillRect(this.pos.x, this.pos.y, this.size.w, this.size.h);
-  this.pos = 
+  this.pos = addVec(this.pos, this.vc);
 }
 
 function addVec(pt,vec){
