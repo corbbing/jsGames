@@ -7,5 +7,6 @@
 //
 
 function player(){
-  this.health = 0;
+  this.health = 100;
+  this.maxHealth = 100;
 }
